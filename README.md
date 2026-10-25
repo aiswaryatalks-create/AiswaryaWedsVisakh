@@ -1,2 +1,0 @@
-# AiswaryaWedsVisakh
-Our Wedding Invitation 
