@@ -1,6 +1,24 @@
-AISWARYA & VISAKH WEDDING WEBSITE — UPDATED
+AISWARYA & VISAKH – WEDDING INVITATION WEBSITE
 
-Upload ALL files in this folder to the root of your GitHub repository (same folder as index.html). Do not upload the ZIP itself.
-Important: music.mp3 and floral-background.png must be uploaded alongside index.html. If only index.html is uploaded, audio and background assets will not load.
-The music begins after the visitor taps the envelope or the music button, because mobile browsers block sound autoplay.
-Photos are included unchanged; no face retouching or AI edits were applied.
+FILES
+- index.html
+- styles.css
+- script.js
+- assets/floral-background.jpg
+
+ADD YOUR COUPLE PHOTO
+1. Add your chosen photo inside the assets folder.
+2. Name it exactly: couple-photo.jpg
+3. The website already points to assets/couple-photo.jpg.
+
+UPLOAD TO GITHUB
+1. Open your existing AiswaryaWedsVisakh repository.
+2. Back up/download the current repository before replacing files.
+3. Upload index.html, styles.css, script.js and the assets folder contents.
+4. Commit the changes.
+5. If Render is connected to this GitHub repository with automatic deploy enabled,
+   it should deploy after the commit.
+
+NOTE
+The envelope is a CSS illustration inspired by your reference, not a pasted screenshot.
+The two map links use Google Maps search URLs; verify the exact venue pins before sharing.

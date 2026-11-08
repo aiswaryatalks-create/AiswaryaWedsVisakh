@@ -1,0 +1,150 @@
+* { box-sizing: border-box; }
+:root {
+  --ink: #735744;
+  --muted: #9a7c67;
+  --accent: #9b6048;
+  --paper: #f5eee5;
+  --line: rgba(132, 100, 77, .32);
+}
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper) url("assets/floral-background.jpg") center top / 100% auto repeat-y fixed;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(250, 247, 241, .18);
+  pointer-events: none;
+  z-index: -1;
+}
+.envelope-screen {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 18px;
+  text-align: center;
+  overflow: hidden;
+}
+.envelope-kicker, .tap-hint, .eyebrow, .role {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 11px;
+  color: var(--muted);
+}
+.envelope-button {
+  position: relative;
+  width: min(82vw, 390px);
+  height: 270px;
+  margin: 30px auto 22px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1000px;
+  -webkit-tap-highlight-color: transparent;
+}
+.envelope-back {
+  position: absolute; inset: 12px 0 0;
+  background: #d8bd9e;
+  border-radius: 5px;
+  box-shadow: 0 16px 35px rgba(76, 51, 33, .14);
+}
+.letter {
+  position: absolute;
+  left: 10%; right: 10%; top: 0;
+  height: 220px;
+  background: #fffdf8;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 12px rgba(70, 48, 31, .08);
+  transition: transform 1s ease, top 1s ease;
+  z-index: 2;
+}
+.letter-small { font-size: 11px; letter-spacing: .12em; color: #9a806d; }
+.letter-names { font-family: Parisienne, cursive; font-size: 32px; color: #875b43; }
+.letter-names i { font-style: normal; font-size: 23px; }
+.letter-date { font-size: 13px; letter-spacing: .16em; }
+.envelope-front {
+  position: absolute; inset: 92px 0 0;
+  background: #e7d1b6;
+  clip-path: polygon(0 0, 50% 62%, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+.envelope-flap {
+  position: absolute; inset: 12px 0 auto;
+  height: 145px;
+  background: #cfad88;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform .8s ease;
+  z-index: 4;
+}
+.wax-seal {
+  position: absolute;
+  z-index: 5;
+  top: 137px; left: 50%;
+  transform: translateX(-50%);
+  width: 58px; height: 58px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  color: #f0d8c4;
+  background: radial-gradient(circle at 35% 30%, #b8795b, #84452f 75%);
+  border: 3px solid #ad7459;
+  box-shadow: 0 3px 7px rgba(60, 32, 20, .22);
+  font-size: 23px;
+  transition: opacity .35s ease;
+}
+.envelope-button.open .envelope-flap { transform: rotateX(180deg); z-index: 1; }
+.envelope-button.open .letter { top: -105px; transform: translateY(-55px); }
+.envelope-button.open .wax-seal { opacity: 0; }
+.invitation { display: none; opacity: 0; transition: opacity 1s ease; }
+.invitation.visible { display: block; opacity: 1; }
+.section { width: min(100% - 34px, 620px); margin: 0 auto; text-align: center; padding: 65px 15px; }
+.hero { padding-top: 90px; }
+.hero h1 { font-weight: 400; font-size: clamp(27px, 6vw, 39px); line-height: 1.2; margin: 22px 0 4px; }
+.intro-line { font-size: 21px; margin: 0; }
+.flourish, .separator { color: #a77c60; margin: 28px 0; font-size: 23px; }
+.date-line { font-size: 18px; letter-spacing: .08em; }
+.photo-frame { width: min(84%, 390px); min-height: 280px; margin: 0 auto 32px; border: 1px solid var(--line); padding: 8px; background: rgba(255,255,255,.38); }
+.photo-frame img { width: 100%; max-height: 520px; display: block; object-fit: cover; }
+.photo-placeholder { display: grid; place-items: center; background: rgba(255,255,255,.35); }
+.photo-placeholder-text { display: none; min-height: 260px; place-items: center; color: var(--muted); font-style: italic; }
+.photo-placeholder .photo-placeholder-text { display: grid; }
+.role { margin: 15px 0 0; }
+.couple h2 { font: 42px Parisienne, cursive; font-weight: 400; margin: 5px 0 18px; color: var(--accent); }
+.ampersand { font: 28px Parisienne, cursive; margin: 0; color: #a77c60; }
+.section-title { font-size: 34px; font-weight: 400; margin: 12px 0 28px; }
+.script { font-family: Parisienne, cursive; color: var(--accent); font-size: 43px; }
+.calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; width: min(100%, 390px); margin: 0 auto; padding: 20px 12px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.24); }
+.calendar span { min-height: 39px; display: grid; place-items: center; font-size: 17px; position: relative; }
+.calendar .weekday { min-height: 28px; font-size: 10px; letter-spacing: .08em; color: var(--muted); }
+.calendar .empty { visibility: hidden; }
+.calendar .wedding-day { width: 36px; height: 36px; min-height: 36px; justify-self: center; align-self: center; border-radius: 50%; color: #fffaf4; background: var(--accent); }
+.calendar .heart { position: absolute; top: -8px; right: -5px; color: var(--accent); font: 15px Georgia, serif; }
+.function-section { padding-top: 60px; padding-bottom: 60px; }
+.function-date { font-size: 19px; margin: 0 0 22px; }
+.venue { font-size: 23px; margin: 0 0 5px; }
+.address { font-size: 18px; margin: 0; }
+.location-link { display: inline-block; margin-top: 25px; padding: 11px 22px; border: 1px solid #a77c60; color: var(--ink); text-decoration: none; font-size: 16px; letter-spacing: .04em; transition: background .25s, color .25s; }
+.location-link:hover { background: var(--accent); color: white; }
+.closing { padding-bottom: 100px; }
+.closing > p:first-child { font-size: 21px; line-height: 1.5; }
+.closing .script { margin: 28px 0 5px; }
+.closing-names { font: 32px Parisienne, cursive; color: var(--accent); margin: 0; }
+@media (max-width: 480px) {
+  body { background-attachment: scroll; background-size: 100% auto; }
+  .section { padding-top: 48px; padding-bottom: 48px; }
+  .hero { padding-top: 65px; }
+  .envelope-button { height: 245px; }
+  .calendar { gap: 2px; padding-left: 5px; padding-right: 5px; }
+  .calendar span { min-height: 35px; font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
